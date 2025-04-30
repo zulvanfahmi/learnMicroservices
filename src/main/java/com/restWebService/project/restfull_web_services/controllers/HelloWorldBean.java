@@ -5,11 +5,11 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class TestBean {
+public class HelloWorldBean {
 
     private String message;
 
-    public TestBean(String message) {
+    public HelloWorldBean(String message) {
         this.message = message;
     }
 
