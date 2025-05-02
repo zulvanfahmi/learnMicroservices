@@ -15,10 +15,12 @@ public class UserDaoService {
 
     private static List<User> users = new ArrayList<>();
 
+    private static Integer usersCount = 0;
+
     static {
-        users.add(new User(1, "Sumanto", LocalDate.now().minusYears(30)));
-        users.add(new User(2, "Sumanti", LocalDate.now().minusYears(35)));
-        users.add(new User(3, "Sumantul", LocalDate.now().minusYears(50)));
+        users.add(new User(++usersCount, "Sumanto", LocalDate.now().minusYears(30)));
+        users.add(new User(++usersCount, "Sumanti", LocalDate.now().minusYears(35)));
+        users.add(new User(++usersCount, "Sumantul", LocalDate.now().minusYears(50)));
     }
 
     public List<User> findAll() {
@@ -27,7 +29,13 @@ public class UserDaoService {
 
     public User findOne(Integer id) {
         Predicate<? super User> predicate = user -> user.getId().equals(id);
-        return users.stream().filter(predicate).findFirst().get();
+        return users.stream().filter(predicate).findFirst().orElse(null);
+    }
+
+    public User save(User user) {
+        user.setId(++usersCount);
+        users.add(user);
+        return user;
     }
 
 }
