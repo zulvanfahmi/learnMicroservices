@@ -3,7 +3,6 @@ package com.restWebService.project.restfull_web_services.user;
 import java.time.LocalDate;
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.restWebService.project.restfull_web_services.posts.Post;
 
